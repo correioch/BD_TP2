@@ -131,10 +131,21 @@ public class ItemMenu{
 	}
 	
 	
-	public String afficherListCours() {
+	public String afficherListCours(String nomEtudiant) {
 		System.out.println("");
 		ArrayList<String> choiceList = new ArrayList<String>();
-		choiceList = baseDonnees.traiterColonne("SELECT Titre FROM cours ORDER BY Titre;");
+		if (nomEtudiant == "vide") {
+			choiceList = baseDonnees.traiterColonne("SELECT Titre FROM cours "
+													+ "ORDER BY Titre;");
+		}else {
+			choiceList = baseDonnees.traiterColonne("SELECT c.Titre FROM cours c "
+													+"INNER JOIN inscription i "
+													+"ON i.Id_cours = c.Id_cours "
+													+"INNER JOIN etudiant e "
+													+"ON e.numeroDossier = i.NumeroDossier "
+													+ "WHERE e.Nom = '" + nomEtudiant + "'"
+													+ " ORDER BY Titre;");
+		}
 
 		int i = 0;
 		for (String choice : choiceList) {

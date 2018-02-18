@@ -91,7 +91,7 @@ public class Menu {
 			// 2. Affichage des clients ayant loué un film
 			String cour;
 			ItemMenu item2 = new ItemMenu();
-			cour = item2.afficherListCours();
+			cour = item2.afficherListCours("vide");
 			item2.afficherListEtudiantPourCour(cour);
 			break;
 		case 3:
@@ -110,20 +110,20 @@ public class Menu {
 			// 5. Nouvelle inscription
 			ItemMenu item5 = new ItemMenu();
 			nomEtudiant = item5.choisirEtudiant();
-			cour = item5.afficherListCours();
+			cour = item5.afficherListCours("vide");
 			item5.faireInscription(nomEtudiant, cour);
 			break;
 		case 6:
 			ItemMenu item6 = new ItemMenu();
 			nomEtudiant = item6.choisirEtudiant();
-			cour = item6.afficherListCours();
+			cour = item6.afficherListCours(nomEtudiant);
 			item6.desinscription(nomEtudiant, cour);
 			break;
 		case 7:
 			// 7. Entrée ou modifié la note
 			ItemMenu item7 = new ItemMenu();
 			nomEtudiant = item7.choisirEtudiant();
-			cour = item7.afficherListCours();
+			cour = item7.afficherListCours(nomEtudiant);
 			item7.modifierNote(nomEtudiant, cour);
 			break;
 		
